@@ -12,6 +12,10 @@ class StudentController extends Controller
     public function __construct($request)
     {
         parent::__construct($request);
+
+        if ($this->guest) {
+            $this->redirect('/');
+        }
     }
 
     public function indexCourse()

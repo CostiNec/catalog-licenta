@@ -1,6 +1,7 @@
 <?php
 namespace models;
 
+use core\Helper;
 use core\Model;
 use PDO;
 
@@ -36,7 +37,8 @@ class User extends Model
         'birthday',
         'phone',
         'role',
-        'group_name'
+        'group_id',
+        'serie_id'
     ];
 
     public function fullName()
@@ -108,5 +110,45 @@ class User extends Model
         }
 
         return $courses;
+    }
+
+    public function serie()
+    {
+        return Serie::find($this->serie_id);
+    }
+
+    public function group()
+    {
+        return Group::find($this->group_id);
+    }
+
+    public function groupName()
+    {
+        $group = $this->group();
+
+        if (is_null($group->name)) {
+            return '-';
+        }
+
+        return $group->name;
+    }
+
+    public function serieName()
+    {
+        $serie = $this->serie();
+
+        if (is_null($serie->name)) {
+            return '-';
+        }
+
+        return $serie->name;
+    }
+
+    public function hasAccessToCourse($courseId)
+    {
+        $access = self::customQuery('SELECT count(*) FROM courses_users cu 
+                                           WHERE cu.user_id = '.$this->id.' AND cu.course_id = '.$courseId)->fetch()[0];
+
+        return (int)$access > 0;
     }
 }

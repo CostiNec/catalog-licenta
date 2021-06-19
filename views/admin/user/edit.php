@@ -20,7 +20,9 @@ $View->includeView('layout.app');
 
                     <?php $View->includeView('admin.user.snippets._form', [
                         'type' => 'edit',
-                        'userTmp' => $userTmp
+                        'userTmp' => $userTmp,
+                        'series' => $series,
+                        'groups' => $groups
                     ]) ;?>
                 </div>
             </div>

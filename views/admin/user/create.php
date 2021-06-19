@@ -18,7 +18,10 @@ $View->includeView('layout.app');
                 <div class="container">
                     <h2 class="mt-4">Creaza utilizator nou</h2>
 
-                    <?php $View->includeView('admin.user.snippets._form') ;?>
+                    <?php $View->includeView('admin.user.snippets._form', [
+                        'series' => $series,
+                        'groups' => $groups
+                    ]) ;?>
                 </div>
             </div>
         </div>

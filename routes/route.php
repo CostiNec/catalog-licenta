@@ -38,12 +38,14 @@ $route->post('/admin/user/delete/{userId}','UserController','delete');
 $route->get('/profesor-cursuri','TeacherController','indexCourses');
 $route->get('/acces-cursuri-studenti/{courseId}','TeacherController','accessCourses');
 $route->post('/grant-access/{courseId}','TeacherController','grantAccess');
+$route->post('/grant-access-serie/{courseId}','TeacherController','grantAccessSeries');
 
 $route->get('/stundenti/{courseId}','TeacherController','students');
 $route->get('/note/{courseId}/{studentId}','GradeController','index');
 $route->get('/nota/creaza/{courseId}/{studentId}','GradeController','create');
 $route->get('/nota/editeaza/{gradeId}','GradeController','edit');
 $route->post('/grade/update/{gradeId}','GradeController','update');
+$route->post('/grade/store/{courseId}/{studentId}','GradeController','store');
 $route->post('/grade/delete/{gradeId}','GradeController','delete');
 
 

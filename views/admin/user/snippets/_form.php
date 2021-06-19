@@ -3,22 +3,24 @@ $firstName = '';
 $lastName = '';
 $birthDay = '';
 $gender = '';
-$group_name = '';
 $role = \models\User::STUDENT;
 $phone = '';
 $email = '';
 $gender = 'm';
+$serieId = 0;
+$groupId = 0;
 
 if (!empty($type) && $type == 'edit') {
     $firstName = $userTmp->first_name;
     $lastName = $userTmp->last_name;
     $birthDay = $userTmp->birthday();
     $gender = $userTmp->gender;
-    $group_name = $userTmp->group_name;
     $role = $userTmp->role;
     $phone = $userTmp->phone;
     $email = $userTmp->email;
     $gender = $userTmp->gender;
+    $serieId = $userTmp->serie_id;
+    $groupId = $userTmp->group_id;
 } else $type = 'create';
 ?>
 <a class="btn btn-secondary mb-2" href="/admin-utilizatori">Inapoi la pagina de index</a>
@@ -42,9 +44,6 @@ if (!empty($type) && $type == 'edit') {
     <label for="last_name" class="mt-3">Nume utilizator</label>
     <input id="last_name" class="form-control" name="last_name" value="<?= $lastName ?>" required>
 
-    <label for="group_name" class="mt-3">Grupa</label>
-    <input id="group_name" class="form-control" name="group_name" value="<?= $group_name ?>">
-
     <label for="birthday" class="mt-3">Ziua de nastere</label>
     <input id="birthday" data-provide="datepicker" class="form-control" name="birthday" value="<?= $birthDay ?>">
 
@@ -59,6 +58,22 @@ if (!empty($type) && $type == 'edit') {
     <select name="gender" id="gender" class="form-control">
         <?php foreach (\models\User::GENDERS as $valueGender => $nameGender) { ?>
             <option <?= $valueGender == $gender ? 'selected' : '' ?> value="<?= $valueGender ?>"><?= $nameGender ?></option>
+        <?php } ?>
+    </select>
+
+    <label for="serie" class="mt-3">Serie</label>
+    <select name="serie_id" id="serie" class="form-control">
+        <option value=""></option>
+        <?php foreach ($series as $serie) { ?>
+            <option <?= $serie->id == $serieId ? 'selected' : '' ?> value="<?= $serie->id ?>"><?= $serie->name ?></option>
+        <?php } ?>
+    </select>
+
+    <label for="serie" class="mt-3">Grupa</label>
+    <select name="group_id" id="serie" class="form-control">
+        <option value=""></option>
+        <?php foreach ($groups as $group) { ?>
+            <option <?= $group->id == $groupId ? 'selected' : '' ?> value="<?= $group->id ?>"><?= $group->name ?></option>
         <?php } ?>
     </select>
 

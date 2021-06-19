@@ -5,6 +5,8 @@ namespace controllers;
 use core\Controller;
 use core\Helper;
 use models\Course;
+use models\Group;
+use models\Serie;
 use models\User;
 
 class UserController extends Controller
@@ -50,7 +52,10 @@ class UserController extends Controller
 
     public function create($request)
     {
-        $this->render('admin.user.create');
+        $this->render('admin.user.create', [
+            'series' => Serie::all(),
+            'groups' => Group::all()
+        ]);
     }
 
     public function store($request)
@@ -58,7 +63,8 @@ class UserController extends Controller
         $userData = [
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
-            'group_name' => $request['group_name'],
+            'group_id' => !empty($request['group_id']) ? $request['group_id'] : null,
+            'serie_id' => !empty($request['serie_id']) ? $request['serie_id'] : null,
             'birthday' => date('Y-m-d', strtotime($request['birthday'])),
             'email' => $request['email'],
             'password' => md5($request['password']),
@@ -79,7 +85,9 @@ class UserController extends Controller
         $userTmp = User::find($request['userId']);
 
         $this->render('admin.user.edit', [
-            'userTmp' => $userTmp
+            'userTmp' => $userTmp,
+            'series' => Serie::all(),
+            'groups' => Group::all()
         ]);
     }
 
@@ -95,7 +103,8 @@ class UserController extends Controller
 
         $userTmp->first_name = $request['first_name'];
         $userTmp->last_name = $request['last_name'];
-        $userTmp->group_name = $request['group_name'];
+        $userTmp->group_id = $request['group_id'];
+        $userTmp->serie_id = $request['serie_id'];
         $userTmp->birthday = date('Y-m-d', strtotime($request['birthday']));
         $userTmp->email = $request['email'];
         $userTmp->role = $request['role'];

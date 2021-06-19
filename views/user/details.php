@@ -26,7 +26,8 @@ $View->includeView('layout.app');
                     <?php } ?>
 
                     <?php if ($user->isStudent()) { ?>
-                        <p>Grupa: <?= $user->group_name ?></p>
+                        <p>Grupa: <?= $user->groupName() ?></p>
+                        <p>Serie: <?= $user->serieName() ?></p>
                     <?php } ?>
                 </div>
             </div>

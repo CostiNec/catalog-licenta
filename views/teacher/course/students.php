@@ -17,7 +17,7 @@ $View->includeView('layout.app');
                 <div class="container">
                     <?php if (!count($students)) { ?>
                         <h2>Nu aveti niciun student inregistrat la cursul dvs.</h2>
-                        <p>Puteti inscrie studenti apasan <a href="/stundenti/<?= $course->id ?>">aici</a></p>
+                        <p>Puteti inscrie studenti apasand <a href="/acces-cursuri-studenti/<?= $course->id ?>">aici</a></p>
                     <?php } else { ?>
                     <h2>Studentii dumneavoastra</h2>
                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
@@ -28,7 +28,7 @@ $View->includeView('layout.app');
                             <th class="th-sm">Grupa
                             </th>
                             <th class="th-sm">Email
-                            </th>
+                            </th>stundenti
                             <th class="th-sm">Actiuni
                             </th>
                         </tr>

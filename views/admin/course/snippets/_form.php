@@ -12,7 +12,7 @@
     } else $type = 'create';
 ?>
 <a class="btn btn-secondary mb-2" href="/admin-cursuri">Inapoi la pagina de index</a>
-<form class="form-group" method="post" action="/grade/<?= $type == 'create' ? 'store' : 'update/' . $course->id ?>">
+<form class="form-group" method="post" action="/admin/course/<?= $type == 'create' ? 'store' : 'update/' . $course->id ?>">
     <label for="name">Nume curs</label>
     <input id="name" class="form-control" name="name" value="<?= $name ?>" required>
     <label for="description" class="mt-3">Descriere curs</label>

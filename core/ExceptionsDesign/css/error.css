@@ -1,0 +1,37 @@
+@import url(//fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,800,700,900);
+
+.row {
+    display: grid;
+    grid-template-areas: 'col1 col2';
+    grid-template-columns: 1fr 1fr;
+}
+
+.error-position {
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    max-width: 40%;
+}
+
+img {
+    width: 600px;
+    position: absolute;
+    right: 15%;
+    top: 10%;
+}
+
+.col1 {
+    grid-area: col1;
+    height: 100%;
+}
+
+.col2 {
+    grid-area: col2;
+    height: 100%;
+}
+
+.error-position p {
+    color: #4e4e4e;
+    font-size: 1.5rem;
+    font-family: 'Raleway', sans-serif;
+}

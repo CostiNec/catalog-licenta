@@ -27,8 +27,10 @@ $View->includeView('layout.app');
                             </th>
                             <th class="th-sm">Grupa
                             </th>
+                            <th class="th-sm">Seria
+                            </th>
                             <th class="th-sm">Email
-                            </th>stundenti
+                            </th>
                             <th class="th-sm">Actiuni
                             </th>
                         </tr>
@@ -37,7 +39,8 @@ $View->includeView('layout.app');
                             <?php foreach ($students as $student) { ?>
                                 <tr>
                                     <td><?= $student->id ?></td>
-                                    <td><?= $student->group_name ?></td>
+                                    <td><?= $student->groupName() ?></td>
+                                    <td><?= $student->serieName() ?></td>
                                     <td><?= $student->email ?></td>
                                     <td>
                                         <div>

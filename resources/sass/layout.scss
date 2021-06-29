@@ -10922,3 +10922,47 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 .select2-dropdown {
   z-index: 2000!important;
 }
+
+.account-details-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+  max-width: 700px;
+}
+
+.icon-user {
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 50%;
+  color: $blue;
+  margin: auto;
+}
+
+.detail-name {
+  font-family: 'Jomhuria', cursive;
+  font-size: 30px;
+  width: fit-content;
+  margin: auto;
+}
+
+.color-red {
+  color: $red;
+}
+
+.width-fit-content {
+  width: fit-content;
+}
+
+.table.dataTable.no-footer {
+  border: none;
+  -webkit-box-shadow: 0px 0px 1px 0px rgb(0 0 0 / 75%);
+  -moz-box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 1px 0px rgb(0 0 0 / 75%);
+}
+
+.dataTable thead td {
+  border-bottom: 1px solid #929292;
+}

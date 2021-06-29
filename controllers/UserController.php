@@ -103,8 +103,8 @@ class UserController extends Controller
 
         $userTmp->first_name = $request['first_name'];
         $userTmp->last_name = $request['last_name'];
-        $userTmp->group_id = $request['group_id'];
-        $userTmp->serie_id = $request['serie_id'];
+        $userTmp->group_id = !empty($request['group_id']) ? $request['group_id'] : null;
+        $userTmp->serie_id = !empty($request['serie_id']) ? $request['group_id'] : null;
         $userTmp->birthday = date('Y-m-d', strtotime($request['birthday']));
         $userTmp->email = $request['email'];
         $userTmp->role = $request['role'];

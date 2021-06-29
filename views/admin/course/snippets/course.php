@@ -2,8 +2,10 @@
     <div class="card-body">
         <h5 class="card-title"><?= $course->name ?></h5>
         <h6 class="card-subtitle mb-2 text-muted"><?= $course->description ?></h6>
-        <a href="/admin-cursuri/editeaza/<?= $course->id ?>" class="card-link">Editeaza</a>
-        <a data-toggle="modal" href="#" data-target="#deleteCourse<?=$course->id?>" class="card-link">Sterge</a>
+        <div class="ml-auto width-fit-content">
+            <a href="/admin-cursuri/editeaza/<?= $course->id ?>" class="card-link"><i class="fas fa-edit"></i></a>
+            <a data-toggle="modal" href="#" data-target="#deleteCourse<?=$course->id?>" class="card-link"><i class="fas fa-trash color-red"></i></a>
+        </div>
     </div>
 </div>
 

@@ -14,8 +14,9 @@ body {
 }
 
 .card2 {
-  margin: 0px 40px
+  margin: 0px 40px;
 }
+
 
 .logo {
   width: 100px;
@@ -25,7 +26,6 @@ body {
 }
 
 .image {
-  width: 360px;
   height: 280px
 }
 
@@ -159,5 +159,9 @@ a {
   .card2 {
     border-top: 1px solid #EEEEEE !important;
     margin: 0px 15px
+  }
+
+  .image {
+    height: 150px;
   }
 }

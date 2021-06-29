@@ -23,7 +23,6 @@ body {
 }
 
 .image {
-  width: 360px;
   height: 280px;
 }
 
@@ -157,6 +156,10 @@ a {
   .card2 {
     border-top: 1px solid #EEEEEE !important;
     margin: 0px 15px;
+  }
+
+  .image {
+    height: 150px;
   }
 }
 

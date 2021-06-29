@@ -107,6 +107,7 @@ class TeacherController extends Controller
             $course->addAccessToSerie($serieId);
         }
 
+
         $this->redirect('/acces-cursuri-studenti/'.$request['courseId']);
     }
 }

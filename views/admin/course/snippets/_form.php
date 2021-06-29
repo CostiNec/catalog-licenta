@@ -16,7 +16,7 @@
     <label for="name">Nume curs</label>
     <input id="name" class="form-control" name="name" value="<?= $name ?>" required>
     <label for="description" class="mt-3">Descriere curs</label>
-    <input id="description" class="form-control" name="description" value="<?= $description ?>">
+    <textarea id="description" class="form-control" rows="6" name="description"><?= $description ?></textarea>
 
     <input name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" hidden>
 
@@ -30,5 +30,5 @@
     </div>
 
 
-    <button class="btn btn-success mt-2"><?= $type == 'create' ? 'Creaza' : 'Editeaza' ?></button>
+    <button class="btn btn-success mt-4"><?= $type == 'create' ? 'Creaza' : 'Editeaza' ?></button>
 </form>

@@ -70,6 +70,10 @@ abstract class Model
     {
         $models = self::where($field,$value);
 
+        if (empty($models)) {
+            return null;
+        }
+
         if (!count($models)) {
             return null;
         }
@@ -289,5 +293,20 @@ abstract class Model
         $stmt= $conn->prepare($query);
         $stmt->execute($parameters);
         return $stmt;
+    }
+
+    public function __isset($name)
+    {
+        if (array_key_exists($name, $this->data)) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    public function has($name)
+    {
+        return $this->__isset($name);
     }
 }

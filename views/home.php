@@ -22,7 +22,25 @@ $View->includeView('layout.app');
                 <?php } ?>
 
                 <?php if ($auth) { ?>
-                    <h2 class="mt-4">Bun venit!</h2>
+                    <?php if ($user->isStudent()) { ?>
+                        <h2 class="mt-4">Bun venit, <?= $user->fullName()?>!</h2>
+                        <p>Aceasta este o platforma online pentru a gestiona situatia dumneavostra scolara</p>
+                        <p>Accesati "Cursurile mele" pentru a vedea daca profesorii dumnevoastra v-au modificat sau adaugat noi note</p>
+
+                    <?php } ?>
+
+                    <?php if ($user->isTeacher()) { ?>
+                        <h2 class="mt-4">Bun venit, <?= $user->fullName()?>!</h2>
+                        <p>Accesati sectiuna de "Administreaza cursuri" pentru a modifica situatia scolara a studentilor dumnevoastra</p>
+
+                    <?php } ?>
+
+                    <?php if ($user->isAdmin()) { ?>
+                        <h2 class="mt-4">Bun venit, <?= $user->fullName()?>!</h2>
+                        <p>Ai dreptul sa adaugi noi utilizatori cu rol de profesor sau student</p>
+                        <p>De asemenea poti administra si cursurile, sa adaugi sau sa stergi</p>
+
+                    <?php } ?>
                 <?php } ?>
                 </div>
             </div>

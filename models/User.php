@@ -114,11 +114,18 @@ class User extends Model
 
     public function serie()
     {
+        if (is_null($this->serie_id)) {
+            return null;
+        }
         return Serie::find($this->serie_id);
     }
 
     public function group()
     {
+        if (is_null($this->group_id)) {
+            return null;
+        }
+
         return Group::find($this->group_id);
     }
 
@@ -126,7 +133,11 @@ class User extends Model
     {
         $group = $this->group();
 
-        if (is_null($group->name)) {
+        if (empty($group)) {
+            return '-';
+        }
+
+        if (!$group->has('name')) {
             return '-';
         }
 
@@ -137,7 +148,11 @@ class User extends Model
     {
         $serie = $this->serie();
 
-        if (is_null($serie->name)) {
+        if (empty($serie)) {
+            return '-';
+        }
+
+        if (!$serie->has('name')) {
             return '-';
         }
 
@@ -150,5 +165,18 @@ class User extends Model
                                            WHERE cu.user_id = '.$this->id.' AND cu.course_id = '.$courseId)->fetch()[0];
 
         return (int)$access > 0;
+    }
+
+    public function icon()
+    {
+        if ($this->isStudent()) {
+            return 'fas fa-user-graduate';
+        }
+
+        if ($this->isTeacher()) {
+            return 'fas fa-chalkboard-teacher';
+        }
+
+        return 'fas fa-users-cog';
     }
 }

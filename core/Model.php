@@ -309,4 +309,36 @@ abstract class Model
     {
         return $this->__isset($name);
     }
+
+    public static function allWithPagination($page, $nr_on_page, $extra)
+    {
+        $tableName = self::getTableName();
+        $conn = self::getConn();
+
+        $sqlCount = 'SELECT count(*) FROM '.$tableName. $extra;
+        $count = $conn->query($sqlCount)->fetch()[0];
+
+        $sql = 'SELECT * FROM '.$tableName.' LIMIT ' . $nr_on_page . ' OFFSET ' . ($nr_on_page * ($page - 1) + 1);
+        $result = $conn->query($sql);
+
+        $responses = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        $modelName = get_called_class();
+
+        $models = [];
+        $modelName = str_replace('/','\\',$modelName);
+
+        foreach ($responses as $response) {
+            $model = new $modelName($response);
+            foreach ($response as $key => $one) {
+                $model->$key = $one;
+            }
+            array_push($models, $model);
+        }
+
+        return [
+            'models' => $models,
+            'pages' => ceil($count/$nr_on_page)
+        ];
+    }
 }

@@ -11,8 +11,15 @@ use models\User;
 
 class UserController extends Controller
 {
+    private $page = 1;
+    const NR_ON_PAGE = 16;
+
     public function __construct($request)
     {
+        if (!empty($_GET['page'])) {
+            $this->page = $_GET['page'];
+        }
+
         parent::__construct($request);
         if ($this->guest) {
             $this->redirect('/');
@@ -34,10 +41,14 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $usersWithCounts = User::allWithPaginationCustom($this->page,self::NR_ON_PAGE,$this->user->id);
+
+        $users = $usersWithCounts['models'];
+        $pages  = $usersWithCounts['pages'];
 
         $this->render('admin.user.index', [
-            'users' => $users
+            'users' => $users,
+            'pages' => $pages
         ]);
     }
 
@@ -104,7 +115,7 @@ class UserController extends Controller
         $userTmp->first_name = $request['first_name'];
         $userTmp->last_name = $request['last_name'];
         $userTmp->group_id = !empty($request['group_id']) ? $request['group_id'] : null;
-        $userTmp->serie_id = !empty($request['serie_id']) ? $request['group_id'] : null;
+        $userTmp->serie_id = !empty($request['serie_id']) ? $request['serie_id'] : null;
         $userTmp->birthday = date('Y-m-d', strtotime($request['birthday']));
         $userTmp->email = $request['email'];
         $userTmp->role = $request['role'];

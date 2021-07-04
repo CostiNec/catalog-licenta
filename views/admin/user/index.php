@@ -35,6 +35,12 @@ $View->includeView('layout.app');
                         echo '</div>';
                     }
                     ?>
+
+                    <?php
+                        $View->includeView('layout.pagination', [
+                                'pages' => $pages
+                        ]);
+                    ?>
                 </div>
             </div>
         </div>

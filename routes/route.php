@@ -52,3 +52,8 @@ $route->post('/grade/delete/{gradeId}','GradeController','delete');
 /** Student's routes */
 $route->get('/cursurile-mele','StudentController','indexCourse');
 $route->get('/notele-mele/{courseId}','StudentController','indexGrades');
+
+/** Statistic's routes */
+$route->get('/statistici','StatisticController','index');
+
+$route->get('/getStatistics','StatisticController','getStatistics');

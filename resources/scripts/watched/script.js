@@ -1,1 +1,3 @@
 require('../layout');
+require('../chartjs');
+

@@ -37,6 +37,8 @@ $View->includeView('template.head');
             <?php if ($user->isStudent()) { ?>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/cursurile-mele">Cursurile mele</a>
             <?php } ?>
+
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/statistici">Statistici</a>
         </div>
         <?php } ?>
     </div>

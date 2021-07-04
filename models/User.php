@@ -179,4 +179,10 @@ class User extends Model
 
         return 'fas fa-users-cog';
     }
+
+    public static function allWithPaginationCustom($page,$nrOnPage,$id)
+    {
+        $extra = ' WHERE id <> ' . $id;
+        return parent::allWithPagination($page, $nrOnPage, $extra);
+    }
 }
